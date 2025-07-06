@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="64f92d29-72a6-4fd1-bc4a-aa4979af3418" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BuildThink.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_5_10_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_10_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_10_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_params_5_10_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_10_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_10_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/src.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/src.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/8.12/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/8.12/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/8.12/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/8.12/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/8.12/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/8.12/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/8.12/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/8.12/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/8.12/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Controller/BrickController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Controller/BrickController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Controller/MypageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Controller/MypageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Model/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Model/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Model/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Model/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Model/Summary.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Model/Summary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Model/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Model/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Repository/BrickRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Repository/BrickRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Repository/BuildingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Repository/BuildingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Repository/MypageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Repository/MypageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Repository/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Repository/UsersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Service/BrickService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Service/BrickService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/Service/MypageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/Service/MypageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/main/java/org/example/SessionConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/org/example/SessionConst.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jaechu12"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/jaechu12/BuildThink",
+    "accountId": "a69e6927-5ac6-49f3-aef7-a3a586222772"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2zUZYpbp0KJyivEiSvCiPl87fUW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="64f92d29-72a6-4fd1-bc4a-aa4979af3418" name="변경" comment="" />
+      <created>1751787664360</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1751787664360</updated>
+      <workItem from="1751787665428" duration="82000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
