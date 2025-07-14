@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Users;
+import com.example.demo.Repository.UsersRepository;
 import com.example.demo.Service.LoginService;
 import com.example.demo.SessionConst;
 import jakarta.servlet.ServletException;
@@ -11,15 +12,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 @Controller
 public class LoginController {
 
     private final LoginService loginService;
+    private final UsersRepository usersRepository;
 
-    public LoginController(LoginService loginService) {
+    public LoginController(LoginService loginService, UsersRepository usersRepository) {
         this.loginService = loginService;
+        this.usersRepository = usersRepository;
     }
 
     @GetMapping("/login")
@@ -29,7 +37,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid Users users, BindingResult bindingResult, HttpServletRequest request,  Model model) throws ServletException {
+    public String login(@Valid Users users, BindingResult bindingResult, HttpServletRequest request, RedirectAttributes redirectAttributes) throws ServletException {
 
         if (bindingResult.hasErrors()) {
             return "login";
@@ -38,8 +46,8 @@ public class LoginController {
         Users loginMember = loginService.login(users.getEmail(), users.getPassword());
 
         if (loginMember == null) {
-            model.addAttribute("errorMessage", "이메일 또는 비밀번호를 확인해주세요");
-            return "login";
+            redirectAttributes.addFlashAttribute("Error", "이메일 또는 비밀번호를 다시 확인해주세요!");
+            return "redirect:/login";
         }
 
         HttpSession session = request.getSession();
@@ -51,6 +59,11 @@ public class LoginController {
     @GetMapping("/")
     public String home(HttpSession session, Model model) {
         Users loginMember = (Users) session.getAttribute(SessionConst.LOGIN_MEMBER);
+
+        LocalDate today = LocalDate.now();
+        DayOfWeek day = today.getDayOfWeek();
+        boolean isSunday = (day == DayOfWeek.SATURDAY);
+        model.addAttribute("isSunday", isSunday);
 
         if (loginMember == null) {
             return "redirect:/login";
@@ -72,4 +85,17 @@ public class LoginController {
 
         return "redirect:/login";
     }
+
+    @GetMapping("/register")
+    public String registMember() {
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String registMember(@ModelAttribute Users users) {
+        loginService.registUsers(users);
+        return "redirect:/login";
+    }
+
+
 }

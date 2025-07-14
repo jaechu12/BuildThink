@@ -3,6 +3,7 @@ package com.example.demo.Model;
 import jakarta.persistence.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -18,7 +19,7 @@ public class Summary {
     private Long userid;
 
     @Column(name = "week_start_date")
-    private Date weekStartDate;
+    private LocalDate weekStartDate;
 
     @Column(name = "brick_count")
     private Long brickCount;
@@ -38,7 +39,7 @@ public class Summary {
         this.userid = userid;
     }
 
-    public void setWeekStartDate(Date weekStartDate) {
+    public void setWeekStartDate(LocalDate weekStartDate) {
         this.weekStartDate = weekStartDate;
     }
 
@@ -59,7 +60,7 @@ public class Summary {
         return userid;
     }
 
-    public Date getWeekStartDate() {
+    public LocalDate getWeekStartDate() {
         return weekStartDate;
     }
 

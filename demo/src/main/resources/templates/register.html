@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로그인</title>
+    <title>회원가입</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -14,7 +14,7 @@
             align-items: center;
         }
 
-        .login-container {
+        .register-container {
             background: white;
             padding: 30px 40px;
             border-radius: 10px;
@@ -28,6 +28,7 @@
         }
 
         input[type="text"],
+        input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 10px;
@@ -39,7 +40,7 @@
         button {
             width: 100%;
             padding: 10px;
-            background-color: #af4fff;
+            background-color: #2196F3;
             color: white;
             border: none;
             border-radius: 5px;
@@ -48,41 +49,19 @@
         }
 
         button:hover {
-            background-color: #af4fff;
-        }
-
-        .signup-link {
-            margin-top: 16px;
-            text-align: center;
-        }
-
-        .signup-link a {
-            text-decoration: none;
-            color: #af4fff;
-            font-weight: bold;
-        }
-
-        .signup-link a:hover {
-            text-decoration: underline;
+            background-color: #1976D2;
         }
     </style>
 </head>
 <body>
-<div class="login-container">
-    <h2>로그인</h2>
-    <form method="POST" action="/login">
-        <input type="text" name="email" placeholder="아이디" required />
+<div class="register-container">
+    <h2>회원가입</h2>
+    <form method="POST" action="/register">
+        <input type="text" name="username" placeholder="이름" required />
+        <input type="email" name="email" placeholder="이메일" required />
         <input type="password" name="password" placeholder="비밀번호" required />
-        <button type="submit">로그인</button>
+        <button type="submit">회원가입</button>
     </form>
-    <div class="signup-link">
-        <p>아직 회원이 아니신가요? <a href="/register">회원가입</a></p>
-    </div>
-</div>
-<div th:if="${Error}">
-    <script th:inline="javascript">
-        alert([[${Error}]]);
-    </script>
 </div>
 </body>
 </html>

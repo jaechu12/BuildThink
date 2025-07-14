@@ -16,8 +16,9 @@ public class Brick {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userid;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Users user;
 
     @Column(name = "content")
     private String content;
@@ -36,8 +37,8 @@ public class Brick {
         this.id = id;
     }
 
-    public void setUserid(Long userid) {
-        this.userid = userid;
+    public void setUsers(Users users) {
+        this.user = users;
     }
 
     public void setContent(String content) {
@@ -53,8 +54,8 @@ public class Brick {
         return id;
     }
 
-    public Long getUserid() {
-        return userid;
+    public Users getUsers() {
+        return user;
     }
 
     public String getContent() {
