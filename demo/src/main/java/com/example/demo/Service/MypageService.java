@@ -1,7 +1,9 @@
 package com.example.demo.Service;
 
+import com.example.demo.DTO.BuildingStatResponseDTO;
 import com.example.demo.DTO.SummaryDTO;
 import com.example.demo.Model.Brick;
+import com.example.demo.Model.BuildingStat;
 import com.example.demo.Model.Summary;
 import com.example.demo.Model.Users;
 import com.example.demo.Repository.BrickRepository;
@@ -71,7 +73,18 @@ public class MypageService {
         return new SummaryDTO(user.getId(), weekStart, brickCount, buildingType);
     }
 
-    public Optional<?> findBuildingStatByUserId(Long userId) {
-        return buildingStatRepository.findById(userId);
+    public Optional<BuildingStat> findBuildingStatByUserId(Long userId) {
+        return buildingStatRepository.findByUserid_Id(userId);
+    }
+
+    public BuildingStatResponseDTO toDto(BuildingStat entity) {
+        return new BuildingStatResponseDTO(
+                entity.getId(),
+                entity.getUserid().getId(),
+                entity.getHouseCount(),
+                entity.getVillaCount(),
+                entity.getApartmentCount(),
+                entity.getTowerCount()
+        );
     }
 }

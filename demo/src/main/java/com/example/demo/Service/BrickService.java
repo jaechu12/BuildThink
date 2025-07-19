@@ -28,7 +28,7 @@ public class BrickService {
     public void brickPost(BrickCreateDTO brickDTO, Users loginMember) {
         Brick brick = new Brick();
         brick.setContent(brickDTO.getContent());
-        brick.setUsers(loginMember);
+        brick.setUser(loginMember);
         brick.setCreated(LocalDateTime.now());
 
         brickRepository.save(brick);

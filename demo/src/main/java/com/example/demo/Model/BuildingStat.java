@@ -1,11 +1,15 @@
 package com.example.demo.Model;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "building_stat")
 @EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
+@NoArgsConstructor
 public class BuildingStat {
 
     @Id
@@ -27,60 +31,4 @@ public class BuildingStat {
 
     @Column(name = "tower_count")
     private Long towerCount = 0L;
-
-    public BuildingStat() {
-    }
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setUserid(Users userid) {
-        this.userid = userid;
-    }
-
-    public void setHouseCount(Long houseCount) {
-        this.houseCount = houseCount;
-    }
-
-    public void setVillaCount(Long villaCount) {
-        this.villaCount = villaCount;
-    }
-
-    public void setApartmentCount(Long apartmentCount) {
-        this.apartmentCount = apartmentCount;
-    }
-
-    public void setTowerCount(Long towerCount) {
-        this.towerCount = towerCount;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public Users getUserid() {
-        return userid;
-    }
-
-    public Long getHouseCount() {
-        return houseCount;
-    }
-
-    public Long getVillaCount() {
-        return villaCount;
-    }
-
-    public Long getApartmentCount() {
-        return apartmentCount;
-    }
-
-    public Long getTowerCount() {
-        return towerCount;
-    }
-
-
 }
-

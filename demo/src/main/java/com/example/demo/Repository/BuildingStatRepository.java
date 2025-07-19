@@ -8,6 +8,6 @@ import java.util.Optional;
 @Repository
 public interface BuildingStatRepository extends JpaRepository<BuildingStat, Long> {
     Optional<BuildingStat> findById(Long id);
-
+    Optional<BuildingStat> findByUserid_Id(Long userId);
     BuildingStat save(BuildingStat buildingStat);
 }

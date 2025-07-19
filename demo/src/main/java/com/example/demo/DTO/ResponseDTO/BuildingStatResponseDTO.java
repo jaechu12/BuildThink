@@ -7,7 +7,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BuildingStatResponseDTO {
-    private String buildingType;
-    private int brickCount;
-    private String userName;
+    private Long id;
+    private Long userId;
+    private Long houseCount;
+    private Long villaCount;
+    private Long apartmentCount;
+    private Long towerCount;
 }

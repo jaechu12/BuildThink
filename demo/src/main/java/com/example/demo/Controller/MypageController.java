@@ -1,6 +1,5 @@
 package com.example.demo.Controller;
 
-import com.example.demo.DTO.BuildingStatResponseDTO;
 import com.example.demo.DTO.SummaryDTO;
 import com.example.demo.Model.Brick;
 import com.example.demo.Model.Users;
@@ -54,7 +53,7 @@ public class MypageController {
             // 이미 정산한 경우
             LocalDate today = LocalDate.now();
             DayOfWeek day = today.getDayOfWeek();
-            boolean isSunday = (day == DayOfWeek.SATURDAY);
+            boolean isSunday = (day == DayOfWeek.SUNDAY);
             model.addAttribute("isSunday", isSunday);
             return "redirect:/";
         }
@@ -62,7 +61,7 @@ public class MypageController {
         model.addAttribute("buildingType", summaryDTO.getBuildingType());
         model.addAttribute("brickCount", summaryDTO.getBrickCount());
         model.addAttribute("message", "정산 완료!");
-        return "summary-result"; // 기존 html 유지
+        return "summary-result";
     }
 
     @GetMapping("/search/{id}")
@@ -74,7 +73,7 @@ public class MypageController {
         }
 
         return mypageService.findBuildingStatByUserId(id)
-                .map(ResponseEntity::ok)
+                .map(entity -> ResponseEntity.ok(mypageService.toDto(entity)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -87,7 +86,7 @@ public class MypageController {
         }
 
         return mypageService.findBuildingStatByUserId(user.getId())
-                .map(ResponseEntity::ok)
+                .map(entity -> ResponseEntity.ok(mypageService.toDto(entity)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
