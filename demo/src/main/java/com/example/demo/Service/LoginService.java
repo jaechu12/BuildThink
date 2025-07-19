@@ -38,7 +38,6 @@ public class LoginService {
 
         Users savedUser = usersRepository.save(user);
 
-        // BuildingStat 초기값 생성 (필드 기본 0으로 세팅)
         BuildingStat stat = new BuildingStat();
         stat.setUserid(savedUser);
         buildingStatRepository.save(stat);

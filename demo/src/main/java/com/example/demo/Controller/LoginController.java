@@ -37,7 +37,7 @@ public class LoginController {
     @GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("userLoginDTO", new UserLoginDTO());
-        return "login"; // 기존 html 이름 유지
+        return "login";
     }
 
     @PostMapping("/login")
@@ -76,7 +76,7 @@ public class LoginController {
 
         model.addAttribute("username", loginMember.getUsername());
 
-        return "logined"; // 기존 html 이름 유지
+        return "logined";
     }
 
     @GetMapping("/logout")
@@ -91,7 +91,7 @@ public class LoginController {
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("userRegisterDTO", new UserRegisterDTO());
-        return "register"; // 기존 html 이름 유지
+        return "register";
     }
 
     @PostMapping("/register")

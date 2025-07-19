@@ -1,11 +1,14 @@
 package com.example.demo.Controller;
 
+import com.example.demo.DTO.BuildingStatResponseDTO;
 import com.example.demo.DTO.SummaryDTO;
 import com.example.demo.Model.Brick;
 import com.example.demo.Model.Users;
 import com.example.demo.Service.MypageService;
 import com.example.demo.SessionConst;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +39,7 @@ public class MypageController {
 
         List<Brick> recentBricks = mypageService.getRecentBricks(loginMember);
         model.addAttribute("recentBricks", recentBricks);
-        return "mypage"; // 기존 html 유지
+        return "mypage";
     }
 
     @PostMapping("/summary")
@@ -64,21 +67,28 @@ public class MypageController {
 
     @GetMapping("/search/{id}")
     @ResponseBody
-    public Object getSearchByID(HttpSession session, @PathVariable Long id) {
+    public ResponseEntity<?> getSearchByID(HttpSession session, @PathVariable Long id) {
         Users user = (Users) session.getAttribute(SessionConst.LOGIN_MEMBER);
         if (user == null) {
-            return "redirect:/login";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return mypageService.findBuildingStatByUserId(id).orElse(null);
+
+        return mypageService.findBuildingStatByUserId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/mypage")
     @ResponseBody
-    public Object getMypage(HttpSession session) {
+    public ResponseEntity<?> getMypage(HttpSession session) {
         Users user = (Users) session.getAttribute(SessionConst.LOGIN_MEMBER);
         if (user == null) {
-            return "redirect:/login";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return mypageService.findBuildingStatByUserId(user.getId()).orElse(null);
+
+        return mypageService.findBuildingStatByUserId(user.getId())
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
+
 }
