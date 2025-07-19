@@ -1,10 +1,12 @@
 package com.example.demo.Controller;
 
+import com.example.demo.DTO.RequestDTO.UserLoginDTO;
+import com.example.demo.DTO.RequestDTO.UserRegisterDTO;
 import com.example.demo.Model.Users;
+import com.example.demo.Repository.BuildingStatRepository;
 import com.example.demo.Repository.UsersRepository;
 import com.example.demo.Service.LoginService;
 import com.example.demo.SessionConst;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -24,26 +26,29 @@ public class LoginController {
 
     private final LoginService loginService;
     private final UsersRepository usersRepository;
+    private BuildingStatRepository buildingStatRepository;
 
-    public LoginController(LoginService loginService, UsersRepository usersRepository) {
+    public LoginController(LoginService loginService, UsersRepository usersRepository, BuildingStatRepository buildingStatRepository) {
         this.loginService = loginService;
         this.usersRepository = usersRepository;
+        this.buildingStatRepository = buildingStatRepository;
     }
 
     @GetMapping("/login")
     public String showLoginForm(Model model) {
-        model.addAttribute("users", new Users());
-        return "login";
+        model.addAttribute("userLoginDTO", new UserLoginDTO());
+        return "login"; // 기존 html 이름 유지
     }
 
     @PostMapping("/login")
-    public String login(@Valid Users users, BindingResult bindingResult, HttpServletRequest request, RedirectAttributes redirectAttributes) throws ServletException {
+    public String login(@Valid @ModelAttribute UserLoginDTO userLoginDTO, BindingResult bindingResult,
+                        HttpServletRequest request, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             return "login";
         }
 
-        Users loginMember = loginService.login(users.getEmail(), users.getPassword());
+        Users loginMember = loginService.login(userLoginDTO);
 
         if (loginMember == null) {
             redirectAttributes.addFlashAttribute("Error", "이메일 또는 비밀번호를 다시 확인해주세요!");
@@ -62,18 +67,16 @@ public class LoginController {
 
         LocalDate today = LocalDate.now();
         DayOfWeek day = today.getDayOfWeek();
-        boolean isSunday = (day == DayOfWeek.SATURDAY);
+        boolean isSunday = (day == DayOfWeek.SUNDAY);
         model.addAttribute("isSunday", isSunday);
 
         if (loginMember == null) {
             return "redirect:/login";
         }
 
-        if (loginMember != null) {
-            model.addAttribute("username", loginMember.getUsername());
-        }
+        model.addAttribute("username", loginMember.getUsername());
 
-        return "logined";
+        return "logined"; // 기존 html 이름 유지
     }
 
     @GetMapping("/logout")
@@ -82,20 +85,23 @@ public class LoginController {
         if (session != null) {
             session.invalidate();
         }
-
         return "redirect:/login";
     }
 
     @GetMapping("/register")
-    public String registMember() {
-        return "register";
+    public String showRegisterForm(Model model) {
+        model.addAttribute("userRegisterDTO", new UserRegisterDTO());
+        return "register"; // 기존 html 이름 유지
     }
 
     @PostMapping("/register")
-    public String registMember(@ModelAttribute Users users) {
-        loginService.registUsers(users);
+    public String registMember(@Valid @ModelAttribute UserRegisterDTO userRegisterDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+
+        loginService.registUsers(userRegisterDTO);
         return "redirect:/login";
     }
-
 
 }

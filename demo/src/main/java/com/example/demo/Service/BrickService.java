@@ -1,13 +1,15 @@
 package com.example.demo.Service;
 
+import com.example.demo.DTO.RequestDTO.BrickCreateDTO;
 import com.example.demo.Model.Brick;
+import com.example.demo.Model.Users;
 import com.example.demo.Repository.BrickRepository;
-import com.example.demo.Repository.UsersRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 
 @Service
 public class BrickService {
@@ -23,9 +25,13 @@ public class BrickService {
         this.brickRepository = brickRepository;
     }
 
-    @Transactional
-    public Brick brickPost(Brick brick){
-        return brickRepository.save(brick);
+    public void brickPost(BrickCreateDTO brickDTO, Users loginMember) {
+        Brick brick = new Brick();
+        brick.setContent(brickDTO.getContent());
+        brick.setUsers(loginMember);
+        brick.setCreated(LocalDateTime.now());
+
+        brickRepository.save(brick);
     }
 
 }

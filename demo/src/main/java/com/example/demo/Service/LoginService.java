@@ -1,6 +1,10 @@
 package com.example.demo.Service;
 
+import com.example.demo.DTO.RequestDTO.UserLoginDTO;
+import com.example.demo.DTO.RequestDTO.UserRegisterDTO;
+import com.example.demo.Model.BuildingStat;
 import com.example.demo.Model.Users;
+import com.example.demo.Repository.BuildingStatRepository;
 import com.example.demo.Repository.UsersRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -16,34 +20,33 @@ public class LoginService {
 
     private final JdbcTemplate jdbcTemplate;
     private final UsersRepository usersRepository;
+    private final BuildingStatRepository buildingStatRepository;
 
-    public LoginService(JdbcTemplate jdbcTemplate, UsersRepository usersRepository) {
+    public LoginService(JdbcTemplate jdbcTemplate, UsersRepository usersRepository, BuildingStatRepository buildingStatRepository) {
         this.jdbcTemplate = jdbcTemplate;
         this.usersRepository = usersRepository;
+        this.buildingStatRepository = buildingStatRepository;
     }
 
-
-    public Users login(String email, String password) {
-        Users users = usersRepository.findByEmail(email);
-
-        if (users == null) {
-            return null;
-        }
-
-        if (users.getPassword().equals(password)) {
-            System.out.println("d");
-            return users;
-        }
-
-        return null;
-    }
 
     @Transactional
-    public Users registUsers(Users member) {
-        if (usersRepository.findByEmail(member.getEmail()) != null) {
-            throw new IllegalArgumentException("가입된 이메일");
-        }
-        return usersRepository.save(member);
+    public Users registUsers(UserRegisterDTO registerDTO) {
+        Users user = new Users();
+        user.setUsername(registerDTO.getUsername());
+        user.setEmail(registerDTO.getEmail());
+        user.setPassword(registerDTO.getPassword());
+
+        Users savedUser = usersRepository.save(user);
+
+        // BuildingStat 초기값 생성 (필드 기본 0으로 세팅)
+        BuildingStat stat = new BuildingStat();
+        stat.setUserid(savedUser);
+        buildingStatRepository.save(stat);
+
+        return savedUser;
     }
 
+    public Users login(UserLoginDTO loginDTO) {
+        return usersRepository.findByEmailAndPassword(loginDTO.getEmail(), loginDTO.getPassword());
+    }
 }

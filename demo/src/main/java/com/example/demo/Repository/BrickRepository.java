@@ -5,7 +5,6 @@ import com.example.demo.Model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +16,8 @@ public interface BrickRepository extends JpaRepository<Brick, Long> {
     Brick save(Brick brick);
 
     List<Brick> findByUserAndCreatedBetween(Users user, LocalDateTime start, LocalDateTime end);
+
     List<Brick> findAllByUserAndCreatedAfter(Users user, LocalDateTime created);
+
     boolean existsByUserAndCreatedBetween(Users user, LocalDateTime start, LocalDateTime end);
 }

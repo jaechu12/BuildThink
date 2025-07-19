@@ -12,20 +12,21 @@ public class BuildingStat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userid;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Users userid;
 
     @Column(name = "house_count")
-    private Long houseCount;
+    private Long houseCount = 0L;
 
     @Column(name = "villa_count")
-    private Long villaCount;
+    private Long villaCount = 0L;
 
     @Column(name = "apartment_count")
-    private Long apartmentCount;
+    private Long apartmentCount = 0L;
 
     @Column(name = "tower_count")
-    private Long towerCount;
+    private Long towerCount = 0L;
 
     public BuildingStat() {
     }
@@ -35,7 +36,7 @@ public class BuildingStat {
         this.id = id;
     }
 
-    public void setUserid(Long userid) {
+    public void setUserid(Users userid) {
         this.userid = userid;
     }
 
@@ -60,7 +61,7 @@ public class BuildingStat {
         return id;
     }
 
-    public Long getUserid() {
+    public Users getUserid() {
         return userid;
     }
 

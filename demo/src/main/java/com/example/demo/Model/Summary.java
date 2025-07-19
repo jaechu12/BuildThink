@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "summary")
