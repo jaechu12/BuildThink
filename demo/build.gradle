@@ -33,6 +33,10 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
+springBoot {
+    mainClass = 'com.example.demo.DemoApplication'
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
