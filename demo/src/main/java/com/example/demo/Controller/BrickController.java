@@ -40,7 +40,7 @@ public class BrickController {
         boolean allowedTime = now.isAfter(start) || now.isBefore(end);
         if (!allowedTime) {
             redirectAttributes.addFlashAttribute("timeError", "지금은 벽돌을 쌓을 수 없는 시간입니다. 다음 시간에 찾아와 주세요!");
-            return "build";
+            return "redirect:/";
         }
 
         // 중복 체크
@@ -49,7 +49,7 @@ public class BrickController {
         LocalDateTime endOfDay = today.plusDays(1).atStartOfDay().minusNanos(1);
         if (brickRepository.existsByUserAndCreatedBetween(loginMember, startOfDay, endOfDay)) {
             redirectAttributes.addFlashAttribute("timeError", "오늘은 이미 벽돌을 쌓았습니다!");
-            return "build";
+            return "redirect:/";
         }
 
         // 저장
