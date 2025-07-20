@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>로그인됨</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            position: relative;
+        }
+
+        .logout-form {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        .logout-form button {
+            padding: 5px 10px;
+            font-size: 12px;
+            background-color: #ccc;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-form button:hover {
+            background-color: #bbb;
+        }
+
+        .welcome {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            font-size: 14px;
+        }
+
+        .submit-button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #ff5252;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #e04848;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/logout}" method="get" class="logout-form">
+        <button type="submit">로그아웃</button>
+    </form>
+
+    <p class="welcome">안녕하세요, <span th:text="${username}">사용자</span>님!</p>
+
+    <form method="post" action="/brick" id="brickForm">
+        <label for="content">오늘의 한마디</label>
+        <textarea id="content" name="content" rows="5" placeholder="여기에 내용을 작성하세요..."></textarea>
+        <button type="submit" class="submit-button">작성 완료</button>
+    </form>
+    <!-- 추가된 버튼: 내 벽돌 보기 -->
+    <form th:action="@{/bricks}" method="get" class="logout-form" style="top: 50px;">
+        <button type="submit">내 벽돌 보기</button>
+    </form>
+    <form th:action="@{/mypage}" method="get" style="margin-top: 10px;">
+        <button type="submit" class="submit-button" style="background-color: #4CAF50;">건물 현황 보기</button>
+    </form>
+
+    <script>
+        const textarea = document.getElementById("content");
+        const form = document.getElementById("brickForm");
+
+        textarea.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
+    </script>
+
+    <div th:if="${timeError != null}">
+        <script th:inline="javascript">
+            alert([[${timeError}]]);
+        </script>
+    </div>
+    <div th:if="${isSunday != null and isSunday}">
+        <form th:action="@{/summary}" method="post">
+            <button type="submit" class="submit-button" style="background-color: #4caf50;">📊 정산하기</button>
+        </form>
+    </div>
+
+    <!-- 여기 수정된 부분 -->
+    <p th:if="${message != null and message}" th:text="${message}"></p>
+
+</div>
+</body>
+</html>

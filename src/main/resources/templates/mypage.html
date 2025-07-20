@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>최근 7일 벽돌</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .back-button {
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      padding: 10px;
+      background-color: #ff5252;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .back-button:hover {
+      background-color: #e04848;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>최근 7일 동안 쌓은 벽돌</h2>
+  <ul>
+    <li th:each="brick : ${recentBricks}">
+      <span th:text="${#temporals.format(brick.created, 'yyyy-MM-dd HH:mm')}"></span> -
+      <span th:text="${brick.content}"></span>
+    </li>
+  </ul>
+  <a th:href="@{/}" class="back-button">메인으로 돌아가기</a>
+</div>
+</body>
+</html>

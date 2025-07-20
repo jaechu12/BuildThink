@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>주간 정산 결과</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .building-info {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .message {
+            margin-bottom: 20px;
+            color: #d9534f; /* 붉은색 */
+            font-weight: bold;
+        }
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff5252;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        a.button:hover {
+            background-color: #e04848;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h2>주간 정산 결과</h2>
+
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+
+    <div th:if="${!message}">
+        <p class="building-info">
+            당신이 이번 주에 쌓은 벽돌 수: <span th:text="${brickCount}">0</span>개
+        </p>
+        <p class="building-info">
+            새로 완성된 건물: <strong th:text="${buildingType}">없음</strong>
+        </p>
+    </div>
+
+    <a href="/" class="button">메인 페이지로 돌아가기</a>
+</div>
+</body>
+</html>
